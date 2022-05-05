@@ -1,0 +1,40 @@
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Solution {
+
+    /**
+     * 翻转链表
+     *
+     * @param head
+     * @return
+     */
+    public ListNode ReverseList(ListNode head) {
+        if(head == null) {
+            return null;
+        }
+
+        ListNode cur = head;
+        ListNode pre = null;
+
+        while(cur != null) {
+            //临时保存未翻转的链表
+            ListNode temp = cur.next;
+
+            //翻转  相当于 pre add cur
+            cur.next = pre;
+            //pre 更新为当前链表状态
+            pre = cur;
+
+            //指向原先保存 未翻转的链表部分 用来下次翻转的起始
+            cur = temp;
+        }
+        return pre;
+    }
+}
